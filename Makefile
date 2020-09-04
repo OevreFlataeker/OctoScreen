@@ -15,10 +15,10 @@ WORKDIR := $(shell pwd)
 BUILD_PATH := $(WORKDIR)/build
 DOCKER_IMAGE_BUILD = mcuadros/octoprint-tft-build
 
-DEBIAN_PACKAGES = STRETCH
-STRETCH_NAME := stretch
-STRETCH_IMAGE := golang:1.9-stretch
-STRETCH_GO_TAGS := gtk_3_22
+DEBIAN_PACKAGES = BUSTER
+BUSTER_NAME := buster
+BUSTER_IMAGE := golang:1.15.1-buster
+BUSTER_GO_TAGS := gtk_3_22
 
 JESSIE_NAME := jessie
 JESSIE_IMAGE := golang:1.8-jessie
@@ -60,13 +60,13 @@ $(DEBIAN_PACKAGES):
 
 build-internal: prepare-internal
 	#go build --tags ${GO_TAGS} -v -o /build/bin/${BINARY_NAME} main.go
-	go mod init github.com/Z-Bolt/OctoScreen; go mod vendor; \
+	go mod init github.com/Z-Bolt/OctoScreen; go mod vendor; GOCACHE=/tmp; go clean -testcache; \
 	cd $(WORKDIR); \
 	debuild --prepend-path=/usr/local/go/bin/ --preserve-env -us -uc; \
 	cp ../*.deb /build/;
 
 prepare-internal:
-	dch --create -v $(VERSION)-1 --package $(PACKAGE_NAME) empty; \
+	dch --create -v $(VERSION) --package $(PACKAGE_NAME) empty; \
 	cd $(WORKDIR)/..; \
 	tar -czf octoscreen_$(VERSION).orig.tar.gz --exclude-vcs OctoScreen
 
