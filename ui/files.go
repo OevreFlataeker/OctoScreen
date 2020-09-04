@@ -6,7 +6,7 @@ import (
 
 	"github.com/dustin/go-humanize"
 	"github.com/gotk3/gotk3/gtk"
-	"github.com/mcuadros/go-octoprint"
+	"github.com/ugurgudelek/go-octoprint"
 )
 
 var filesPanelInstance *filesPanel

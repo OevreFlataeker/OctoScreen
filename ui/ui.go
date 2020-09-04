@@ -9,7 +9,7 @@ import (
 	"github.com/coreos/go-systemd/daemon"
 	"github.com/gotk3/gotk3/gdk"
 	"github.com/gotk3/gotk3/gtk"
-	"github.com/mcuadros/go-octoprint"
+	"github.com/ugurgudelek/go-octoprint"
 	"github.com/sirupsen/logrus"
 )
 
@@ -198,6 +198,7 @@ func (m *UI) loadSettings() {
 }
 
 func (m *UI) update() {
+	m.sdNotify("WATCHDOG=1")
 	if m.connectionAttempts > 8 {
 		m.s.putOnHold()
 		return

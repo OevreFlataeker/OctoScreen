@@ -3,7 +3,7 @@ package ui
 import (
 	"encoding/json"
 
-	"github.com/mcuadros/go-octoprint"
+	"github.com/ugurgudelek/go-octoprint"
 )
 
 func getPanel(ui *UI, parent Panel, item octoprint.MenuItem) Panel {
