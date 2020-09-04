@@ -198,6 +198,7 @@ func (m *UI) loadSettings() {
 }
 
 func (m *UI) update() {
+	m.sdNotify("WATCHDOG=1")
 	if m.connectionAttempts > 8 {
 		m.s.putOnHold()
 		return
