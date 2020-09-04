@@ -60,6 +60,7 @@ $(DEBIAN_PACKAGES):
 
 build-internal: prepare-internal
 	#go build --tags ${GO_TAGS} -v -o /build/bin/${BINARY_NAME} main.go
+	go mod init github.com/Z-Bolt/OctoScreen; go mod vendor; \
 	cd $(WORKDIR); \
 	debuild --prepend-path=/usr/local/go/bin/ --preserve-env -us -uc; \
 	cp ../*.deb /build/;
