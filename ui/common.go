@@ -10,7 +10,7 @@ import (
 
 	"github.com/gotk3/gotk3/glib"
 	"github.com/gotk3/gotk3/gtk"
-	"github.com/mcuadros/go-octoprint"
+	"github.com/ugurgudelek/go-octoprint"
 )
 
 // Set at compilation time.
